@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskT6.Views.PageUser2"
+             xmlns:vm="clr-namespace:TaskT6.ViewModels"
+             BackgroundColor="White"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:local="clr-namespace:TaskT6.ViewModels"
+             prism:ViewModelLocator.AutowireViewModel="True"
+            >
+
+    <ContentPage.Resources>
+        <vm:ConverterImage x:Key="ConverWidth"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout >
+
+
+
+                <Frame  HeightRequest="250"  BorderColor="Transparent" HasShadow="True">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="80"/>
+
+                        </Grid.RowDefinitions>
+                        <local:GradientColorStack StartColor="#4530ff" EndColor="#ff30f8" Margin="-20"  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2">
+
+                        </local:GradientColorStack>
+                        <StackLayout BackgroundColor="White" Margin="-20"  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2">
+
+                        </StackLayout>
+                        <Frame CornerRadius="10" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="4" BackgroundColor="White"/>
+                            <Image Source="iconlogin" Grid.Column="1" Grid.RowSpan="2"/>
+                        <StackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
+                            <Label Text="{Binding Username}" FontAttributes="Bold" TextColor="#75849a" HorizontalOptions="Center" Margin="0,0,0,0"/>
+                            <Label Text="{Binding Email}" FontSize="13" TextColor="#75849a" HorizontalOptions="Center" Margin="0,0,0,0"/>
+
+                        </StackLayout>
+                        <StackLayout Grid.Column="0" Grid.Row="3">
+                            <Label Text="Photo" FontSize="13" TextColor="#75849a" HorizontalOptions="Center" Margin="0,0,0,0"/>
+                            <Label Text="{Binding Countimg}"  FontAttributes="Bold" FontSize="14" TextColor="#e9168c" HorizontalOptions="Center" Margin="0,0,0,0" HorizontalTextAlignment="Center"/>
+
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Grid.Row="3">
+                            <Label Text="Phone" FontSize="13" TextColor="#75849a" HorizontalOptions="Center" Margin="0,0,0,0"/>
+                            <Label Text="{Binding Phone}"  FontAttributes="Bold" FontSize="14" TextColor="#e9168c" HorizontalOptions="Center" Margin="0,0,0,0"  HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Grid.Row="3">
+                            <Label Text="Website" FontSize="13" TextColor="#75849a" HorizontalOptions="Center" Margin="0,0,0,0"/>
+                            <Label Text="{Binding Website}"  FontAttributes="Bold" FontSize="14" TextColor="#e9168c" HorizontalOptions="Center" Margin="0,0,0,0"  HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+
+                    </Grid>
+                </Frame>
+                <StackLayout HeightRequest="110">
+                    <StackLayout>
+                        <CollectionView ItemsSource="{Binding Namelist}"
+                                         ItemsLayout="{x:Static ListItemsLayout.HorizontalList}"
+                                        SelectionMode="Single"
+                                        SelectedItem="{Binding SelectedAvatar}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70" />
+
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.RowSpan="2"  CornerRadius="{Binding Source={x:Reference imgavatar}
+                                                                , Path=Width,Converter={StaticResource ConverWidth},
+                                                                ConverterParameter={Binding Source={x:Reference imgavatar},
+                                                                Path=Width}}"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Start"
+                                               HasShadow="True"
+                                               Padding="0">
+                                            <Image Source="{Binding Avatar}"  x:Name="imgavatar"
+                                                   HeightRequest="{Binding Source={x:Reference imgavatar}, Path=Width}"
+                                                   WidthRequest="60"
+                                                   Aspect="Fill"/>      
+
+
+                                        </Frame>
+                                     
+                                        <Label Grid.Column="0" Grid.Row="2"
+                                              Text="{Binding Username}"
+                                              FontSize="10" TextColor="#75849a"  HorizontalOptions="Center" />
+
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Margin="0, 20,0,0">
+                    <CollectionView ItemsSource="{Binding Photolist}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="3"/>
+
+
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10" >
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  />
+
+
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="-5,-5,-5,-5" x:Name="itemimg" Source="{Binding ThumbnailUrl}" WidthRequest="150" HeightRequest="{Binding Source={x:Reference itemimg},Path=Width}" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+
+</ContentPage>
+    

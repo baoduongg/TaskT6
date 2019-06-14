@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:TaskT6.ViewModels"
+             x:Class="TaskT6.Views.PageListImage" Title="Image">
+    <ContentPage.Content>
+        <StackLayout>
+            <local:GradientColorStack StartColor="#3e5151" EndColor="#decba4">
+                <StackLayout Padding="20">
+
+                    <CollectionView ItemsSource="{Binding Photolist}"  SelectionMode="Single" SelectedItem="{Binding SelectedPhoto}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.RowSpan="2"
+                       Source="{Binding ThumbnailUrl}"
+                       Aspect="AspectFill"
+                       HeightRequest="60"
+                       WidthRequest="60" />
+                                    <Label Grid.Column="1" Grid.ColumnSpan="2"
+                       Text="{Binding Title}"
+                       FontAttributes="Bold" />
+
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </local:GradientColorStack>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

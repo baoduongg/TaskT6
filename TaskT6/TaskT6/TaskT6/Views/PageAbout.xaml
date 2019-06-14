@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Infor Image"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TaskT6.Views.PageAbout">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="{Binding Url}" />
+            <StackLayout Orientation="Vertical" Padding="20" Spacing="30" >
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Title: "/>
+                    <Label Text="{Binding Title}"/>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Album Name: "/>
+                    <Label Text="{Binding Albumname}"/>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="User Name: "/>
+                    <Label Text="{Binding Username}"/>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Email: "/>
+                    <Label Text="{Binding Email}"/>
+
+                </StackLayout>
+                <Button Text="Quay Lai" Command="{Binding Btnback}"  />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

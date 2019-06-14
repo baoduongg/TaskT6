@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:TaskT6.ViewModels"
+             x:Class="TaskT6.Views.PageLogin" Title="Login" >
+    <ContentPage.Content>
+        <local:GradientColorStack StartColor="#f968d7" EndColor="#32f4ff">
+            <StackLayout Orientation="Vertical" Padding="20" Spacing="30" >
+                <BoxView HeightRequest="10"/>
+                <Image Source="{Binding Uriimage}" HeightRequest="100" WidthRequest="100"/>
+                <BoxView HeightRequest="60"/>
+                <Frame BackgroundColor="#BF043055" HasShadow="False" CornerRadius="10"  >
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Entry Text="{Binding EtrEmail}" Placeholder="UserName" HeightRequest="40" TextColor="Black"/>
+
+                        <Entry Text="{Binding Etrpass}" Placeholder="Pass" HeightRequest="40" TextColor="Black" IsPassword="True"/>
+                        <Button Text="Login" Command="{Binding Btnlogincommand}" />
+                    </StackLayout>
+                   
+                </Frame>
+               
+            </StackLayout>
+
+        </local:GradientColorStack>
+    </ContentPage.Content>
+</ContentPage>

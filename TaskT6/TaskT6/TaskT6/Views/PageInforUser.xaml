@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TaskT6.ViewModels"
+             x:Class="TaskT6.Views.PageInforUser"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+              Title="Thông tin người dùng">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ConverterImage x:Key="ConverWidth"/>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <local:GradientColorStack StartColor="#3e5151" EndColor="#decba4">
+            <StackLayout>
+                <BoxView HeightRequest="50"/>
+                <Frame CornerRadius="{Binding Source={x:Reference imgavatar}
+                            , Path=Width,Converter={StaticResource ConverWidth},
+                            ConverterParameter={Binding Source={x:Reference imgavatar},
+                            Path=Width}}"                           
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               HasShadow="True"
+                               Padding="0">
+                    <Image Source="iconlogin.jpg" x:Name="imgavatar"                                
+                                   HeightRequest="{Binding Source={x:Reference imgavatar}, Path=Width}"
+                                   WidthRequest="140"
+                                   Aspect="Fill"/>
+                </Frame>
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0"  Text="Name :" />
+                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}"/>
+                    <Label  Grid.Column="0" Grid.Row="1" Text="User Name :" />
+                    <Label  Grid.Column="1" Grid.Row="1" Text="{Binding Username}"/>
+                    <Label  Grid.Column="0" Grid.Row="2" Text="Pass :" />
+                    <Label  Grid.Column="1" Grid.Row="2" Text="{Binding Password}"/>
+                    <Label Grid.Column="0" Grid.Row="3" Text="Email :" />
+                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding Email}"/>
+                    <Label  Grid.Column="0" Grid.Row="4" Text="Phone :" />
+                    <Label  Grid.Column="1" Grid.Row="4" Text="{Binding Phone}"/>
+                    <Label  Grid.Column="0" Grid.Row="5" Text="WebSite :" />
+                    <Label  Grid.Column="1" Grid.Row="5" Text="{Binding Website}"/>
+                </Grid>
+                <Button Text="Quay Lai" Command="{Binding Btnback}"/>
+               
+            </StackLayout>
+        </local:GradientColorStack>
+    </ContentPage.Content>
+</ContentPage>

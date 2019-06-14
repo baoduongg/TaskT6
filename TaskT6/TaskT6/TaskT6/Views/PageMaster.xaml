@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskT6.Views.PageMaster"
+             xmlns:page="clr-namespace:TaskT6.Views"
+         xmlns:local="clr-namespace:TaskT6.ViewModels">
+    
+    <MasterDetailPage.Master>
+        <ContentPage Title="MasterPage">
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <local:ConverterImage x:Key="ConverWidth"/>
+                </ResourceDictionary>
+
+            </ContentPage.Resources>
+            <ContentPage.Content>
+                <StackLayout>
+                    <StackLayout BackgroundColor="Gray">
+                        <BoxView WidthRequest="60"/>
+                        <Frame  CornerRadius="{Binding Source={x:Reference imgavatar}
+                            , Path=Width,Converter={StaticResource ConverWidth},
+                            ConverterParameter={Binding Source={x:Reference imgavatar},
+                            Path=Width}}"
+                          
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               HasShadow="True"
+                               Padding="0">
+                            <Image Source="iconlogin.jpg" x:Name="imgavatar"
+                                 
+                                   HeightRequest="{Binding Source={x:Reference imgavatar}, Path=Width}"
+                                   WidthRequest="140"
+                                   Aspect="Fill"/>
+                           
+
+                        </Frame>
+                        <Label Text="{Binding Email}" HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+
+                    <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                        <Button VerticalOptions="FillAndExpand" 
+                                        
+                                       Command="{Binding Btninfor}"
+                                        Text="Thông tin cá nhân" 
+                                        FontSize="24"/>
+                        <Button VerticalOptions="FillAndExpand" 
+                                      Command="{Binding Btnlistimg}"
+                                        Text="Duyệt hình ảnh" 
+                                        FontSize="24"/>
+                        <Button VerticalOptions="FillAndExpand" 
+                                x:Name="btnlogout"
+                                Text="Đăng xuất" 
+                                FontSize="24"
+                                local:LongPressedEffect.Command="{Binding Btnlogout}"
+                              >
+                            <Button.Effects>
+                                <local:LongPressedEffect/>
+                            </Button.Effects>
+                        </Button>
+
+                    </StackLayout>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <page:PageUser2/>
+    </MasterDetailPage.Detail>
+    
+</MasterDetailPage>
